@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="Island" Version="11000" InternalType="">
+  <VirtualDirectory Name="Assets">
+    <File Name="Assets/font.ttf"/>
+  </VirtualDirectory>
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <VirtualDirectory Name="World">
+      <VirtualDirectory Name="Entity">
+        <File Name="src/World/Entity/Player.cpp"/>
+      </VirtualDirectory>
+      <File Name="src/World/WorldMap.cpp"/>
+      <VirtualDirectory Name="Tile">
+        <File Name="src/World/Tile/Tile.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
     <VirtualDirectory Name="Graphics">
+      <File Name="src/Graphics/GraphicsStorage.cpp"/>
       <File Name="src/Graphics/AsciiSprite.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Stage">
@@ -11,13 +24,26 @@
     </VirtualDirectory>
     <File Name="main.cpp"/>
     <VirtualDirectory Name="Core">
+      <File Name="src/Core/Vec2i.cpp"/>
+      <File Name="src/Core/Font.cpp"/>
       <File Name="src/Core/Game.cpp"/>
       <File Name="src/Core/Renderer.cpp"/>
       <File Name="src/Core/Window.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
+    <VirtualDirectory Name="World">
+      <VirtualDirectory Name="Entity">
+        <File Name="include/World/Entity/Player.h"/>
+      </VirtualDirectory>
+      <File Name="include/World/WorldMap.h"/>
+      <VirtualDirectory Name="Tile">
+        <File Name="include/World/Tile/Tile.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
     <VirtualDirectory Name="Graphics">
+      <File Name="include/Graphics/SpriteEnum.h"/>
+      <File Name="include/Graphics/GraphicsStorage.h"/>
       <File Name="include/Graphics/AsciiSprite.h"/>
       <File Name="include/Graphics/ISprite.h"/>
     </VirtualDirectory>
@@ -26,6 +52,8 @@
       <File Name="include/Stage/IStage.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Core">
+      <File Name="include/Core/Vec2i.h"/>
+      <File Name="include/Core/Font.h"/>
       <File Name="include/Core/Game.h"/>
       <File Name="include/Core/Renderer.h"/>
       <File Name="include/Core/Window.h"/>
@@ -46,12 +74,12 @@
       <Compiler Options="-g -Wall" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>
-      <Linker Options="-O0;-lSDL2;lSDL2_ttf" Required="yes">
+      <Linker Options="-O0;-lSDL2;-lSDL2_ttf" Required="yes">
         <LibraryPath Value="."/>
         <LibraryPath Value="Debug"/>
       </Linker>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="$(ProjectName)" IntermediateDirectory="" Command="$(WorkspacePath)/build-$(WorkspaceConfiguration)/bin/$(OutputFile)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)/build-$(WorkspaceConfiguration)/lib" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="$(ProjectName)" IntermediateDirectory="" Command="$(WorkspacePath)/build-$(WorkspaceConfiguration)/bin/$(OutputFile)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="/home/qurao/dev/GameDev/GameDev/Island" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <BuildSystem Name="CodeLite Makefile Generator"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>

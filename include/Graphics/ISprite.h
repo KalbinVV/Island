@@ -8,7 +8,8 @@
 class ISprite
 {
 public:
-    virtual void draw(Renderer* renderer, SDL_Rect dstRect, SDL_Rect* srcRect = NULL) = 0;
+    virtual void draw(Renderer* renderer, SDL_Rect* dstRect, SDL_Rect* srcRect = NULL) = 0;
+    virtual ~ISprite() {};
 };
 
 #endif // ISPRITE_H_INCLUDED

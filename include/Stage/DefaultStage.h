@@ -11,11 +11,16 @@ class DefaultStage : public IStage
 private:
     Game* _game;
 
+    void drawPlayer();
+    void drawMap();
+
 public:
     DefaultStage(Game* game);
     virtual void render() override;
     virtual void handleEvents() override;
-    virtual ~DefaultStage() {}
+    virtual ~DefaultStage()
+    {
+    }
 };
 
 #endif // DEFAULTSTAGE_H_INCLUDED

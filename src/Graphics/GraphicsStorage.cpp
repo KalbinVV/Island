@@ -4,6 +4,8 @@
 
 #include "Core/Game.h"
 #include "Graphics/AsciiSprite.h"
+#include "Graphics/AtlasSprite.h"
+#include "Graphics/SpriteAtlasesStorage.h"
 
 GraphicsStorage* GraphicsStorage::uniquePtr = nullptr;
 
@@ -37,24 +39,30 @@ ISprite* GraphicsStorage::genSprite(SpriteEnum spriteEnum)
     _amountOfSpritesInStorage++;
 
     switch(spriteEnum) {
+    case SpriteEnum::Ground: {
+        sprite = new AtlasSprite(SpriteAtlasesStorage::init()
+            ->getSpriteAtlas(SpriteAtlasEnum::Tiles), 
+            SDL_Rect { x : 1, y : 1, w : 10, h : 10 }, game->getRenderer());
+        break;
+    }
     case SpriteEnum::Player: {
-        sprite = new AsciiSprite(game->getFont(), '#', 
-            SDL_Color { r : 220, g : 96, b : 46 }, 
-            game->getRenderer());
+        sprite = new AtlasSprite(SpriteAtlasesStorage::init()
+            ->getSpriteAtlas(SpriteAtlasEnum::People), 
+            SDL_Rect { x : 1, y : 0, w : 10, h : 10 }, game->getRenderer());
         break;
     }
     case SpriteEnum::Grass: {
-        sprite = new AsciiSprite(game->getFont(), '_', 
-            SDL_Color { r : 49, g : 89, b : 67 }, 
-            game->getRenderer());
+        sprite = new AsciiSprite(game->getFont(), '_', SDL_Color { r : 49, g : 89, b : 67 }, game->getRenderer());
         break;
     }
     case SpriteEnum::Tree: {
-        sprite = new AsciiSprite(game->getFont(), 't', 
-            SDL_Color { r : 162, g : 215, b : 41 }, 
-            game->getRenderer());
+        sprite = new AtlasSprite(SpriteAtlasesStorage::init()
+            ->getSpriteAtlas(SpriteAtlasEnum::Tiles), 
+            SDL_Rect { x : 30, y : 2, w : 10, h : 10 }, game->getRenderer());
         break;
     }
+    default:
+        throw std::invalid_argument("Invalid spriteEnum!"); // TODO: add exception
     }
 
     return sprite;

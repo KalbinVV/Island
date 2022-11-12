@@ -1,6 +1,9 @@
+#include "World/Entity/Player.h"
+
+#include <stdexcept>
+
 #include "Core/Game.h"
 #include "Graphics/GraphicsStorage.h"
-#include "World/Entity/Player.h"
 
 Player::Player()
 {
@@ -15,21 +18,22 @@ Vec2i Player::getPosition()
 
 void Player::setPosition(Vec2i position)
 {
-    _position = position;
-}
-
-void Player::move(Vec2i position)
-{
     WorldMap* worldMap = Game::init()->getWorldMap();
     const int worldWidth = worldMap->getWidth();
     const int worldHeight = worldMap->getHeight();
-
-    if(position.x >= 0 && position.x < worldWidth && position.y >= 0 && position.y < worldHeight) {
-        _position = position;
+    
+    if(position.x < 0 || position.x >= worldWidth || position.y < 0 || position.y >= worldHeight) {
+        throw std::invalid_argument("Invalid player move!"); //TODO: add exception
     }
+    
+    _position = position;
 }
 
 void Player::draw(Renderer* renderer, SDL_Rect* dstRect, SDL_Rect* srcRect)
 {
     GraphicsStorage::init()->initSprite(_spriteEnum)->draw(renderer, dstRect, srcRect);
+}
+
+std::string Player::getName(){
+    return "Player";
 }

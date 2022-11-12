@@ -12,10 +12,16 @@
       </VirtualDirectory>
       <File Name="src/World/WorldMap.cpp"/>
       <VirtualDirectory Name="Tile">
+        <File Name="src/World/Tile/TileBuilder.cpp"/>
+        <File Name="src/World/Tile/TileDelegatesStorage.cpp"/>
+        <File Name="include/World/Tile/TileDelegate.cpp"/>
         <File Name="src/World/Tile/Tile.cpp"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="Graphics">
+      <File Name="src/Graphics/SpriteAtlasesStorage.cpp"/>
+      <File Name="src/Graphics/SpriteAtlas.cpp"/>
+      <File Name="src/Graphics/AtlasSprite.cpp"/>
       <File Name="src/Graphics/GraphicsStorage.cpp"/>
       <File Name="src/Graphics/AsciiSprite.cpp"/>
     </VirtualDirectory>
@@ -34,14 +40,25 @@
   <VirtualDirectory Name="include">
     <VirtualDirectory Name="World">
       <VirtualDirectory Name="Entity">
+        <File Name="include/World/Entity/IEntity.h"/>
         <File Name="include/World/Entity/Player.h"/>
       </VirtualDirectory>
       <File Name="include/World/WorldMap.h"/>
       <VirtualDirectory Name="Tile">
+        <File Name="include/World/Tile/TileBuilder.h"/>
+        <File Name="include/World/Tile/TileEnum.h"/>
+        <File Name="include/World/Tile/ITile.h"/>
+        <File Name="include/World/Tile/TileDelegateEnum.h"/>
+        <File Name="include/World/Tile/TileDelegatesStorage.h"/>
+        <File Name="include/World/Tile/TileDelegate.h"/>
         <File Name="include/World/Tile/Tile.h"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="Graphics">
+      <File Name="include/Graphics/SpriteAtlasEnum.h"/>
+      <File Name="include/Graphics/SpriteAtlasesStorage.h"/>
+      <File Name="include/Graphics/SpriteAtlas.h"/>
+      <File Name="include/Graphics/AtlasSprite.h"/>
       <File Name="include/Graphics/SpriteEnum.h"/>
       <File Name="include/Graphics/GraphicsStorage.h"/>
       <File Name="include/Graphics/AsciiSprite.h"/>
@@ -74,7 +91,7 @@
       <Compiler Options="-g -Wall" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>
-      <Linker Options="-O0;-lSDL2;-lSDL2_ttf" Required="yes">
+      <Linker Options="-O0;-lSDL2;-lSDL2_ttf;-lSDL2_image" Required="yes">
         <LibraryPath Value="."/>
         <LibraryPath Value="Debug"/>
       </Linker>

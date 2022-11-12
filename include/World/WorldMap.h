@@ -3,11 +3,13 @@
 
 #include "World/Tile/Tile.h"
 
-class WorldMap{
+class WorldMap
+{
 private:
     Tile** _tiles;
     int _worldWidth;
     int _worldHeight;
+
 public:
     WorldMap();
     void initMap(int worldWidth, int worldHeight);

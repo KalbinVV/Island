@@ -4,8 +4,9 @@
 #include "Core/Vec2i.h"
 #include "Graphics/ISprite.h"
 #include "Graphics/SpriteEnum.h"
+#include "World/Entity/IEntity.h"
 
-class Player : ISprite
+class Player : public ISprite, public IEntity
 {
 private:
     SpriteEnum _spriteEnum;
@@ -15,8 +16,8 @@ public:
     Player();
     Vec2i getPosition();
     void setPosition(Vec2i position);
-    void move(Vec2i position);
     void draw(Renderer* renderer, SDL_Rect* dstRect, SDL_Rect* srcRect = NULL) override;
+    std::string getName() override;
 };
 
 #endif // PLAYER_H_INCLUDED

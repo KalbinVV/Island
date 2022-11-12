@@ -1,6 +1,8 @@
 #include "Core/Window.h"
 #include <stdexcept>
 
+#include <SDL2/SDL.h>
+
 Window::Window()
 {
     _sdlWindow = nullptr;
@@ -21,7 +23,7 @@ SDL_Window* Window::getSdlWindow()
 void Window::open(const char* title, int width, int height)
 {
     _sdlWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-        width, height, SDL_WINDOW_SHOWN);
+        width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE );
     if(_sdlWindow == NULL) {
         throw std::invalid_argument(SDL_GetError()); // TODO: Add exception
     }
@@ -52,9 +54,17 @@ int Window::getWidth()
     return _width;
 }
 
+void Window::setWidth(int width){
+    _width = width;
+}
+
 int Window::getHeight()
 {
     return _height;
+}
+
+void Window::setHeight(int height){
+    _height = height;
 }
 
 Window::~Window()

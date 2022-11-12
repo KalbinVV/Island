@@ -2,20 +2,24 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 
 #include "Stage/DefaultStage.h"
+#include "World/Tile/TileBuilder.h"
 
 Game* Game::uniquePtr = nullptr;
 
 void Game::initModules()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
+    IMG_Init(IMG_INIT_PNG);
     TTF_Init();
 }
 
 void Game::unInitModules()
 {
     SDL_Quit();
+    IMG_Quit();
     TTF_Quit();
 }
 
@@ -51,8 +55,7 @@ Renderer* Game::getRenderer()
 void Game::initWorld(int worldWidth, int worldHeight)
 {
     _worldMap.initMap(worldWidth, worldHeight);
-    Tile tile(SpriteEnum::Tree);
-    _worldMap.set(5, 5, tile);
+    _worldMap.set(5, 5, TileBuilder::getTile(TileEnum::Tree));
 }
 
 WorldMap* Game::getWorldMap()

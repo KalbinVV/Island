@@ -8,8 +8,8 @@ int main()
 
     Game* game = Game::init();
     try {
-        game->initWorld(200, 200);
-        game->setViewRange(25);
+        game->initWorld(50, 50);
+        game->setViewRange(7);
         game->openFont("./Assets/font.ttf", 8);
         game->run();
     }catch(const std::exception& e){

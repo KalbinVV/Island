@@ -2,6 +2,7 @@
 #define SPRITEENUM_H_INCLUDED
 
 enum class SpriteEnum{
+    Ground,
     Player,
     Grass,
     Tree
